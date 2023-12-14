@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: myingress
-  labels:
-    name: myingress
+  name: get-task-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-  - host: <Host>
+  - host: get-task.shivesh.online
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: <Service>
+            name: get-tasks
             port: 
-              number: <Port>
+              number: 80

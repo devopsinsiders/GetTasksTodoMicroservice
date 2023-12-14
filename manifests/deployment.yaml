@@ -13,13 +13,18 @@ spec:
         app: get-tasks
     spec:
       containers:
-      - name: get-tasks
+      - name: get-tasks                                         
+        image: shivesh183/get-task
+        ports:
+        - containerPort: 8000
         env:
           - name: FRUITNAME
             valueFrom:
               configMapKeyRef:
-                key: 
-                name:                                            
-        image: devopsinsiders/get-tasks
-        ports:
-        - containerPort: 8000
+                key: FRUITNAME3
+                name: fruitdetails        
+          - name: CONNECTION_STRING
+            valueFrom:
+              secretKeyRef:
+                  key: kchbhi
+                  name: dbdetails	         
